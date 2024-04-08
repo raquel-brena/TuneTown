@@ -4,7 +4,7 @@ Este é um projeto simples de uma rede social desenvolvido como parte do curso "
 
 ## Descrição do Projeto
 
-A Rede Social Simples é uma aplicação web construída utilizando React.js com Vite como bundler.
+Aplicação web de uma rede social simples construída utilizando React.js com Vite como bundler.
 
 ## Como Executar
 
@@ -35,7 +35,7 @@ cd web1
 ```
 docker-compose up --build
 ```
-*Após isso, basta para executar normalmente (O "-d" serve para rodar o projeto em segundo plano):*
+*Após isso, basta executar normalmente (O "-d" serve para rodar o projeto em segundo plano):*
 ```
 docker-compose up -d
 ```
