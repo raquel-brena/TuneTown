@@ -16,25 +16,35 @@ Para executar este projeto localmente, siga as instruções abaixo:
 
 ### Passos
 
-1. Clone este repositório em seu computador:
+#### 1. Clone este repositório em seu computador:
 
 ```
 git clone git@github.com:raquel-brena/web1.git
 ```
 
-2. Navegue até o diretório do projeto:
+#### 2. Navegue até o diretório do projeto:
 
 ```
 cd web1
 ```
 
-3. Execute o comando abaixo para iniciar o projeto:
+#### 3. Execute o comando abaixo para iniciar o projeto :
+
+*Na primeira execução, é necessário construir as imagens:*
 
 ```
 docker-compose up --build
 ```
+*Após isso, basta para executar normalmente (O "-d" serve para rodar o projeto em segundo plano):*
+```
+docker-compose up -d
+```
+*Para verificar se os contêineres estão em execução:*
+```
+docker-compose ps
+```
 
-4. Acesse a aplicação em seu navegador através do seguinte endereço:
+#### 4. Acesse a aplicação em seu navegador através do seguinte endereço:
 
 ```
 http://localhost:3000
