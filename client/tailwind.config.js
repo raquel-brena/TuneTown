@@ -1,15 +1,26 @@
 /** @type {import('tailwindcss').Config} */
+
 export default {
+  darkMode: ["selector", '[data-mode="dark"]'],
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+
   theme: {
     extend: {
       colors: {
-        "oil-black-100": "#161616",
-        "oil-black-200": "#1B1B1B",
-        "oil-black-300": "#262626",
+        base: "var(--base)",
+        theme: "var(--theme)",
+        fume: "var(--fume)",
+        stroke: "var(--stroke)",
+        contrast: "var(--contrast)",
+        post: "var(--post)",
+        puro: "var(--puro)",
       },
-      boxShadow: {
-        moon: " inset 14px -1px 9.8px #759EBD",
+      textColor: {
+        theme: "var(--theme)",
+
+      },
+      borderColor: {
+        theme: "var(--theme)",
       },
     },
   },
