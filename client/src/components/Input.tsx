@@ -1,7 +1,7 @@
 interface InputProps {
-    label: string,
-
+    label: string
 }
+
 function Input(props: InputProps) {
     return (
       <div className="flex flex-col space-y-2">
