@@ -8,7 +8,6 @@ export const HomePage = () => {
 
   return (
     <div className="bg-base text-contrast gap-40 justify-center items-center flex fixed w-screen h-screen text-balance">
-      
       <ThemeButton />
       <div className="flex relative h-auto w-[30%]">
         <img className="size-fit" src={logo} alt="Logo" />
@@ -37,17 +36,18 @@ export const HomePage = () => {
             </span>
           </div>
         </div>
-        <div className="w-full h-px bg-oil-black-300" />
+      
 
         <Button text="Criar conta" onClick={() => {}} />
 
-      <p className='text-contrast text-xs'>Ao se inscrever, você concorda com os Termos de Serviço e a Política de Privacidade, incluindo o Uso de Cookies.</p>
-        <h1 className="font-semibold text-xl">Já tem uma conta?</h1>
-        <Button text="Entrar com o e-mail" full onClick={() => {}} />
+        <p className="text-contrast text-xs">
+          Ao se inscrever, você concorda com os Termos de Serviço e a Política
+          de Privacidade, incluindo o Uso de Cookies.
+        </p>
 
-        <div className="w-full h-px bg-oil-black-300" />
-        <div className="w-full flex justify-center text-xs underline">
-          <button>Esqueceu sua senha?</button>
+        <div className="space-y-3">
+          <h1 className="font-semibold text-xl">Já tem uma conta?</h1>
+          <Button text="Entrar com o e-mail" full onClick={() => {}} />
         </div>
       </div>
     </div>
