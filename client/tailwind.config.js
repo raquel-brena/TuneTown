@@ -17,10 +17,15 @@ export default {
       },
       textColor: {
         theme: "var(--theme)",
-
       },
-      borderColor: {
-        theme: "var(--theme)",
+      keyframes: {
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+      },
+      animation: {
+        "slow-spin": "spin 5s linear 1 ",
       },
     },
   },
