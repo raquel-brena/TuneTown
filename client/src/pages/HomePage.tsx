@@ -20,12 +20,12 @@ export const HomePage = () => {
       />
       <div className="size-[100%] rounded-full blur-3xl  bg-purple-600  translate-x-[95%] translate-y-96 opacity-10 absolute" />
       <ThemeButton />
-      <div className="flex relative h-auto w-[30%]">
+      <div className=" relative h-auto md:w-[30%] hidden md:flex ">
         <img className="size-fit" src={logo} alt="Logo" />
       </div>
 
-      <div className="flex flex-col w-1/4 space-y-6">
-        <h1 className="font-semibold text-3xl ">Inscreva-se hoje</h1>
+      <div className="flex flex-col w-full md:w-1/4 space-y-6 p-12 md:p-0">
+        <h1 className="font-semibold text-3xl  ">Inscreva-se hoje</h1>
         <div className="justify-center overflow-hidden">
           <GoogleLogin
             size="large"
