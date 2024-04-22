@@ -2,19 +2,19 @@
 interface ButtonProps {
     text: string;
     full?: boolean;
-    onClick: () => void;
 }
 
-export const Button = ({ text, full, onClick }: ButtonProps) => {
+export const Button = ({ text, full }: ButtonProps) => {
   return (
     <button
-      onClick={onClick}
+    type = "button"
       className={`flex items-center font-semibold justify-center text-center 
         ${
           full
-            ? "bg-transparent text-theme border border-theme hover:bg-theme/10 hover:text-theme/10"
-            : "bg-theme hover:bg-fume/10 border-stroke"
+            ? "bg-transparent text-theme border border-theme hover:text-theme/10"
+            : "bg-theme hover:bg-fume/10 border-stroke "
         } 
+        hover:opacity-90 transition-opacity 
         w-full py-2 rounded-sm text-base`}
     >
       {text}
