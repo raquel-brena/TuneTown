@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import moon from "../assets/moon.svg";
+import sun from "../assets/sun.svg";
 
 export const ThemeButton = () => {
   const [theme, setTheme] = useState("");
@@ -53,8 +55,20 @@ export const ThemeButton = () => {
   };
 
   return (
-    <button className="text-black absolute" onClick={toggleTheme}>
-     ALTERAR TEMA
-    </button>
+    <button className="text-black border border-stroke 
+    absolute size-12 items-center rounded-md flex justify-center
+    hover:w-20 transition-all duration-500 group hover:bg-blend-overlay hover:shadow-md hover:shadow-[#cfe9bc1a]" onClick={toggleTheme}>
+     
+     { theme === 'dark' ?  
+     <div className="relative h-auto flex items-center group-hover:gap-2  justify-center w-3 over:before:content-['dark'] text-theme  shadow-inner group-hover:transform ">
+        <img className="size-fit group-hover:-rotate-12 " src={moon} alt="Logo" />
+        <div className="group-hover:before:content-['dark'] text-theme text-sm hover:rotate-0"></div>
+      </div> 
+      :  
+      <div className="relative h-auto flex items-center group-hover:gap-2 justify-center w-[0.9rem] over:before:content-['dark'] text-theme  shadow-inner group-hover:transform ">
+      <img className="size-fit group-hover:-rotate-12  " src={sun} alt="Logo" />
+      <div className="group-hover:before:content-['light'] text-sm text-theme hover:rotate-0"></div>
+    </div> }
+</button>
   );
 };
