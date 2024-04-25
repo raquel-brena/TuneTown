@@ -4,7 +4,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import "./index.css";
 
 import { Profile } from './pages/Profile.tsx';
-import { HomePage } from './pages/HomePage.tsx';
+import { InitialPage } from './pages/InitialPage.tsx';
+import { Home } from './pages/Home.tsx';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import AuthProvider from './components/route/AuthProvider.tsx';
 import { ProtectedComponent } from './components/route/ProtectedRoute.tsx';
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
     path: "/",
     element: 
       <ProtectedComponent>
-        <HomePage />
+        <InitialPage />
       </ProtectedComponent>,
     errorElement: <div>Not Found</div>,
   },
@@ -22,6 +23,11 @@ const router = createBrowserRouter([
     path: "/:profileId",
     element: <Profile />,
   },
+  {
+    path: "/home",
+    element: <Home />,
+  },
+  
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
