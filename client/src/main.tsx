@@ -11,7 +11,7 @@ import { ProtectedComponent } from './components/route/ProtectedRoute.tsx';
 
 const router = createBrowserRouter([
   {
-    path: "/home",
+    path: "/",
     element: 
       <ProtectedComponent>
         <HomePage />
