@@ -11,7 +11,7 @@ export const ProtectedComponent = ({ children }: ProtectedComponentProps) => {
 
     useEffect(() => {
         if (user == null){
-            navigate('/home', {replace: true})
+            navigate('/', {replace: true})
         } else {
             navigate(`/${user.id}`);
         }
