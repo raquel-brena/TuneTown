@@ -1,10 +1,10 @@
-# Rede Social Simples - Desenvolvimento de Sistemas Web I
+# Rede Social de Música - Desenvolvimento de Sistemas Web I
 
-Este é um projeto simples de uma rede social desenvolvido como parte do curso "Desenvolvimento de Sistemas Web I" na Universidade Federal do Rio Grande do Norte (UFRN).
+Este é um projeto simples de uma rede social de música desenvolvida como parte do curso "Desenvolvimento de Sistemas Web I" na Universidade Federal do Rio Grande do Norte (UFRN).
 
 ## Descrição do Projeto
 
-Aplicação web de uma rede social simples construída utilizando React.js com Vite como bundler.
+Aplicação web de uma rede social de música simples construída utilizando React.js com Vite como bundler.
 
 ## Como Executar
 
@@ -33,7 +33,7 @@ cd web1
 *Na primeira execução, é necessário construir as imagens:*
 
 ```
-docker-compose up --build
+docker-compose up -d --build
 ```
 *Após isso, basta executar normalmente (O "-d" serve para rodar o projeto em segundo plano):*
 ```
