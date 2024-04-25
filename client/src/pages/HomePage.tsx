@@ -1,5 +1,6 @@
-import { GoogleLogin } from "@react-oauth/google";
+
 import logo from "../assets/logo.svg";
+import spotify_logo from "../assets/spotify_logo.svg";
 import { ThemeButton } from "../components/ThemeButton";
 import { Button } from "../components/Button";
 import * as Dialog from "@radix-ui/react-dialog";
@@ -7,6 +8,9 @@ import { FormSignIn } from "../components/forms/FormSignIn";
 import { FormSignUp } from "../components/forms/FormSignUp";
 
 export const HomePage = () => {
+  const AUTH_URL: string =
+    "https://accounts.spotify.com/authorize?client_id=8b945ef10ea24755b83ac50cede405a0&response_type=code&redirect_uri=http://localhost:3000&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
+
   return (
     <div className="bg-base text-contrast gap-40 justify-center items-center flex fixed w-screen h-screen text-balance">
       <div
@@ -19,26 +23,26 @@ export const HomePage = () => {
         blur-3xl opacity-5"
       />
       <div className="size-[100%] rounded-full blur-3xl  bg-purple-600  translate-x-[95%] translate-y-96 opacity-10 absolute" />
-      <div className="absolute top-4 left-4"><ThemeButton /></div>
-      <div className=" relative h-auto md:w-[30%] hidden md:flex ">
-        <img className="size-fit" src={logo} alt="Logo" />
+      <div className="absolute top-4 left-4">
+        <ThemeButton />
+      </div>
+      <div className=" relative md:h-2/4 w-auto  hidden md:flex ">
+        <img className="w-full h-auto" src={logo} alt="Logo" />
       </div>
 
-      <div className="flex flex-col w-full md:w-1/4 space-y-6 p-12 md:p-0">
-        <h1 className="font-semibold  text-3xl  ">Inscreva-se hoje</h1>
+      <div className="flex flex-col w-full md:w-1/4 h-[50%] space-y-6 p-12 md:p-0">
+        <h1 className="font-semibold  text-3xl  outline-none pointer-events-none ">
+          Inscreva-se hoje
+        </h1>
         <div className="justify-center overflow-hidden">
-          <GoogleLogin
-            size="large"
-            shape="rectangular"
-            logo_alignment="center"
-            text="signup_with"
-            onSuccess={(credentialResponse) => {
-              console.log(credentialResponse);
-            }}
-            onError={() => {
-              console.log("Login Failed");
-            }}
-          />
+          <Button onClick={() => window.open(AUTH_URL, "_blank")} bg="bg-white">
+            <div className="flex text-[#161616] relative gap-3">
+              <div className=" relative h-auto size-6 hidden md:flex ">
+                <img className="size-fit " src={spotify_logo} alt="Logo" />
+              </div>
+              Inscrever-se com Spotify
+            </div>
+          </Button>
         </div>
 
         <div>
@@ -51,14 +55,13 @@ export const HomePage = () => {
 
         <Dialog.Root>
           <Dialog.Trigger>
-            <Button text="Criar conta" />
+            <Button>Criar conta</Button>
           </Dialog.Trigger>
 
           <Dialog.Portal>
             <Dialog.Overlay className="bg-[#292929] opacity-50 data-[state=open]:animate-overlayShow fixed inset-0" />
             <Dialog.Content className=" bg-fume text-contrast stroke-stroke data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
-           
-            <FormSignIn/>
+              <FormSignIn />
 
               <Dialog.Close asChild>
                 <button className="IconButton" aria-label="Close">
@@ -68,23 +71,28 @@ export const HomePage = () => {
             </Dialog.Content>
           </Dialog.Portal>
         </Dialog.Root>
-        <p className="text-contrast text-xs outline-none pointer-events-none">
-          Ao se inscrever, você concorda com os Termos de Serviço e a Política
-          de Privacidade, incluindo o Uso de Cookies.
+
+        <p className="text-contrast text-justify text-xs outline-none pointer-events-none">
+          Ao se inscrever, você concorda com os{" "}
+          <a className="underline">Termos de Serviço </a>e a
+          <a className="underline"> Política de Privacidade</a>, incluindo o Uso
+          de <a className="underline">Cookies</a>.
         </p>
+
         <Dialog.Root>
           <Dialog.Trigger>
             <div className="space-y-3 text-left">
-              <h1 className="font-semibold text-xl">Já tem uma conta?</h1>
-              <Button text="Entrar com o e-mail" full />
+              <h1 className="font-semibold text-xl outline-none pointer-events-none">
+                Já tem uma conta?
+              </h1>
+              <Button full>Entrar com o e-mail</Button>
             </div>
           </Dialog.Trigger>
 
           <Dialog.Portal>
             <Dialog.Overlay className="bg-[#292929] opacity-50  data-[state=open]:animate-overlayShow fixed inset-0" />
             <Dialog.Content className="text-contrast data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-fume stroke-stroke p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
-              
-              <FormSignUp/>
+              <FormSignUp />
 
               <Dialog.Close asChild>
                 <button className="IconButton" aria-label="Close">
