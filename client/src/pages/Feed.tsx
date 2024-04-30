@@ -1,7 +1,7 @@
-import { useParams } from "react-router-dom";
+
 import { Menu } from "../components/Menu.tsx";
 import { ThemeButton } from "../components/ThemeButton.tsx";
-import { Share } from "../components/Share.tsx";
+import { Share } from "../components/MenuTop.tsx";
 import { Container } from "../components/Container.tsx"
 export const Home = () => {
 
