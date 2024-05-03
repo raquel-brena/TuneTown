@@ -1,5 +1,5 @@
 
-import { Menu } from "../components/Menu.tsx";
+import { Menu } from "../components/MenuLeft.tsx";
 import { ThemeButton } from "../components/ThemeButton.tsx";
 import { Share } from "../components/MenuTop.tsx";
 import { Container } from "../components/Container.tsx"
