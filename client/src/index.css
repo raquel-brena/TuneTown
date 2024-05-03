@@ -18,6 +18,7 @@
     --post: #cfe9bc;
     --puro: #000000;
     --copacity-25: rgba(255, 255, 255, 0.25);
+    --opacity-theme-: #CFE9BC;
   }
 }
 
@@ -30,6 +31,7 @@
   --post: #cfe9bc;
   --puro: #ffffff;
   --copacity-25: rgba(74, 74, 74, 0.25);
+  --copacity-theme: #8c41d714;
 }
 
 :root[data-theme="dark"] {
@@ -41,4 +43,5 @@
   --post: #cfe9bc;
   --puro: #000000;
   --copacity-25: rgba(255, 255, 255, 0.25);
+  --copacity-theme: #cfe9bc14;
 }

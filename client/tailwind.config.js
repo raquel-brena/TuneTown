@@ -14,7 +14,8 @@ export default {
         contrast: "var(--contrast)",
         post: "var(--post)",
         puro: "var(--puro)",
-        copacity_25: "var(--copacity-25)"
+        copacity_25: "var(--copacity-25)",
+        copacity_theme: "var(--copacity-theme)"
       },
       textColor: {
         theme: "var(--theme)",
