@@ -5,7 +5,7 @@ import "./index.css";
 
 import { Profile } from './pages/Profile.tsx';
 import { InitialPage } from './pages/InitialPage.tsx';
-import { Home } from './pages/Home.tsx';
+import { Home } from './pages/Feed.tsx';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import AuthProvider from './components/route/AuthProvider.tsx';
 import { ProtectedComponent } from './components/route/ProtectedRoute.tsx';
