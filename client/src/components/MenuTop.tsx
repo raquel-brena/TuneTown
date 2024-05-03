@@ -1,9 +1,7 @@
 import { MenuitemShare } from "./MenuTopitem"
 import { Photo } from "./Photo"
-import music_pink_logo from "../assets/top_menu/music_pink_logo.svg"
-import playlist_purple_logo from "../assets/top_menu/playlist_purple_logo.svg";
-import podcast_green_logo from "../assets/top_menu/podcast_green_logo.svg";
-import forum_blue_logo from "../assets/top_menu/forum_blue_logo.svg";
+import { forum_blue_logo, music_pink_logo, playlist_purple_logo, podcast_green_logo } from "../assets/top_menu"
+import { Img } from "./Img";
 
 export const Share = () => {
     return (
@@ -17,44 +15,28 @@ export const Share = () => {
           <div className="w-full gap-4 mt-5 flex items-end justify-end ">
             <MenuitemShare>
               <div className=" flex w-[25%] h-auto">
-                <img
-                  className="w-full h-auto"
-                  src={music_pink_logo}
-                  alt="Logo"
-                />
+                <Img src={music_pink_logo} alt="Logo" />
               </div>
-              Música
+             Música
             </MenuitemShare>
 
             <MenuitemShare>
               <div className=" flex w-[25%] h-auto">
-                <img
-                  className="w-full h-auto"
-                  src={playlist_purple_logo}
-                  alt="Logo"
-                />
+                <Img src={playlist_purple_logo} alt="Logo" />
               </div>
               Playlist
             </MenuitemShare>
 
             <MenuitemShare>
               <div className=" flex w-[25%] h-auto">
-                <img
-                  className="w-full h-auto"
-                  src={podcast_green_logo}
-                  alt="Logo"
-                />
+                <Img src={podcast_green_logo} alt="Logo" />
               </div>
               Podcast
             </MenuitemShare>
 
             <MenuitemShare>
               <div className=" flex w-[25%] h-auto">
-                <img
-                  className="w-full h-auto"
-                  src={forum_blue_logo}
-                  alt="Logo"
-                />
+                <Img src={forum_blue_logo} alt="Logo" />
               </div>
               Forum
             </MenuitemShare>
