@@ -1,8 +1,8 @@
 import { MenuLeftItem } from "./MenuLeftItem"
-import {  profile, foruns, home, search}  from "../assets/left_menu";
-import { Img } from "./Img"
+import {  profile, foruns, home, search}  from "../../../assets/left_menu";
+import { Img } from "../../Img"
 
-export const Menu = () => {
+export const MenuLeft = () => {
 
     return (
       <div
@@ -11,11 +11,11 @@ export const Menu = () => {
       h-12 w-full absolute bottom-0 border-box 
       border border-stroke md:relative overflow-hidden"
       >
-        <div className="h-2/3 w-full text-contrast gap-4 flex-col items-center flex">
+        <div className="h-2/3 w-full sm:flex-row text-contrast gap-4 md:flex-col items-center flex">
           <MenuLeftItem>
             <Img src={home} alt="Logo" />
           </MenuLeftItem>
-
+          
           <MenuLeftItem>
             <Img src={search} alt="Logo" />
           </MenuLeftItem>
