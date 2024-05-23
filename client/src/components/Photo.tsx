@@ -1,6 +1,12 @@
-export const Photo = () => {
+
+interface PhotoProps {
+    width: string;
+    height: string;
+    bg: string;
+}
+export const Photo = ({width, height, bg}: PhotoProps) => {
 
     return (
-        <div className="h-12 w-12 flex-none rounded-full bg-[#D9D9D9]" />
+        <div className={`${width} ${height} flex-none rounded-full bg-[${bg}]`} />
     )
 }
