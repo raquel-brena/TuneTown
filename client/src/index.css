@@ -45,3 +45,8 @@
   --copacity-25: rgba(255, 255, 255, 0.25);
   --copacity-theme: #cfe9bc14;
 }
+
+/* Isso afeta a barra de rolagem em geral */
+::-webkit-scrollbar {
+  width: 0px; /* Largura da barra de rolagem */
+}
