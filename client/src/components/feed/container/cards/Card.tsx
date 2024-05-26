@@ -1,5 +1,5 @@
 
-import { Photo } from "../../Photo";
+import { Photo } from "../../../Photo";
 import { IoHeartOutline } from "react-icons/io5";
 import { FaRegCommentAlt } from "react-icons/fa";
 
@@ -13,20 +13,20 @@ interface CardProps {
 
 function Box({ title, content, created_at }: CardProps) {
   return (
-    <div
-      className={`flex w-full  md:w-[85%] sm:h-72 md:h-36
-    border-stroke 
-    border text-contrast flex-col bg-fume p-2 rounded-lg`}
+    <div className={`flex w-full  md:w-[85%] sm:h-72 md:h-max
+    border-stroke border text-contrast flex-col bg-fume p-2 
+    rounded-lg`}
     >
+
       <div className="flex w-full h-[30%] items-center gap-2">
         <Photo width="w-8" height="h-8" bg="#D9D9D9" />
         <div className="flex flex-col text-sm">
           <span>{title}</span>
-          <span className="text-xs">{created_at}</span>
+          <span className="text-xs text-copacity_25">{created_at}</span>
         </div>
       </div>
 
-      <div className="flex justify-center h-[50%]"> {content}</div>
+      <div className="flex justify-center max-h-full text-justify text-pretty p-3 px-7">{content}</div>
 
       <div className="flex w-full h-[20%] gap-6 px-7 ">
         <button
