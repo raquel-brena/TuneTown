@@ -5,15 +5,16 @@ import { Img } from "../../../Img";
 
 export const MenuTop = () => {
     return (
-      <div className="h-[15%] md:w-[85%] w-full rounded-lg border-box relative bg-fume 
-      border border-stroke overflow-hidden">
-        
+      <div
+        className="  h-[15%] md:w-[85%] w-full rounded-lg border-box relative bg-fume 
+      border border-stroke overflow-hidden"
+      >
         <div className=" h-full px-3 md:px-6 w-full my-3 items-center justify-center">
           <div className="w-full items-center h-[30%] flex gap-4 ">
-            <Photo width="w-12" height="h-12" bg="#D9D9D9" />
-            <input className="bg-copacity_25 w-full h-full rounded-md " />
+            <Photo size="3" bg="D9D9D9" />
+            <input className="outline-none bg-copacity_25 w-full h-full rounded-md " />
           </div>
-          
+
           <div className="w-full gap-4 mt-5 flex items-end justify-end ">
             <MenuitemShare>
               <div className=" flex w-[25%] h-auto">
