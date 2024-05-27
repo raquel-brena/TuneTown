@@ -5,29 +5,46 @@ import "./index.css";
 
 import { Profile } from './pages/Profile.tsx';
 import { InitialPage } from './pages/InitialPage.tsx';
-import { Home } from './pages/Feed.tsx';
+import { ContainerCentral } from './pages/ContainerCentral.tsx';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import AuthProvider from './components/route/AuthProvider.tsx';
 import { ProtectedComponent } from './components/route/ProtectedRoute.tsx';
+import { Feed } from './pages/Feed.tsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: 
+    element: (
       <ProtectedComponent>
         <InitialPage />
-      </ProtectedComponent>,
+      </ProtectedComponent>
+    ),
     errorElement: <div>Not Found</div>,
   },
   {
     path: "/:profileId",
-    element: <Profile />,
+    element: (
+      <ContainerCentral>
+        <Profile />
+      </ContainerCentral>
+    ),
   },
   {
     path: "/home",
-    element: <Home />,
+    element: (
+      <ContainerCentral>
+        <Feed />
+      </ContainerCentral>
+    ),
   },
-  
+  {
+    path: "/foruns",
+    element: (
+      <ContainerCentral>
+        <div>foruns</div>
+      </ContainerCentral>
+    ),
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
