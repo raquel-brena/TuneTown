@@ -1,13 +1,28 @@
-
-import { MenuLeft } from "../components/feed/menuLeft/MenuLeft.tsx";
+import { MenuLeft } from "../components/menuLeft/MenuLeft.tsx";
 import { ThemeButton } from "../components/ThemeButton.tsx";
-import { Sidebar } from "../components/feed/sidebar/Sidebar.tsx";
-import { useState } from "react";
+import { Sidebar } from "../components/sidebar/Sidebar.tsx";
+import { useEffect, useState } from "react";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
-export const ContainerCentral = ({children}: {
-  children: JSX.Element | JSX.Element[] | string | string[] | any } 
-) => {
-  const [buttonSelected, setButtonSelected] = useState<string>("home");
+export const ContainerCentral = ({
+  children,
+}: {
+  children: JSX.Element | JSX.Element[] | string | string[] | any;
+}) => {
+  const location = useLocation();
+
+  const [buttonSelected, setButtonSelected] = useState<string>(
+    location.pathname
+  );
+
+  useEffect(() => {
+    const path = location.pathname.split("/")[1];
+    if (path !== "home" && path !== "search" && path !== "foruns") {
+      setButtonSelected("profile");
+    } else {
+      setButtonSelected(path);
+    }
+  }, []);
 
   return (
     <div className="bg-base text-contrast items-center flex fixed w-screen h-screen text-balance">
@@ -23,13 +38,12 @@ export const ContainerCentral = ({children}: {
       <div
         className="h-full space-y-5 mx-2 md:mx-0 
         w-full md:w-[60%] flex relative 
-        flex-col overflow-y-auto scroll-smooth scroll"
+        flex-col overflow-y-auto scroll-smooth scroll items-center"
       >
         {children}
       </div>
 
       <Sidebar />
-
     </div>
   );
 };
