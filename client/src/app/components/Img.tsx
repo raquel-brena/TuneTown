@@ -5,6 +5,6 @@ interface ImageProps {
 
 export const Img = ({ src, alt }: ImageProps) => {
   return (
-      <img className="w-auto h-auto" src={src} alt={alt} />
+      <img className="w-6 h-auto" src={src} alt={alt} />
   );
 };

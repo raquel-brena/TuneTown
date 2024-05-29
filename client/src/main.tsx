@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import "./index.css";
 
-import { Profile } from './pages/Profile.tsx';
-import { InitialPage } from './pages/InitialPage.tsx';
-import { ContainerCentral } from './pages/ContainerCentral.tsx';
+import { Profile } from './app/pages/Profile.tsx';
+import { InitialPage } from './app/pages/InitialPage.tsx';
+import { ContainerCentral } from './app/pages/ContainerCentral.tsx';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import AuthProvider from './components/route/AuthProvider.tsx';
-import { ProtectedComponent } from './components/route/ProtectedRoute.tsx';
-import { Feed } from './pages/Feed.tsx';
+import AuthProvider from './infra/route/AuthProvider.tsx';
+import { ProtectedComponent } from './infra/route/ProtectedRoute.tsx';
+import { Feed } from './app/pages/Feed.tsx';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +53,23 @@ const router = createBrowserRouter([
       </ContainerCentral>
     ),
   },
+  {
+    path: "/more",
+    element: (
+      <ContainerCentral>
+        <div>more</div>
+      </ContainerCentral>
+    ),
+  },
+  {
+    path: "/config",
+    element: (
+      <ContainerCentral>
+        <div>config</div>
+      </ContainerCentral>
+    ),
+  },
+
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

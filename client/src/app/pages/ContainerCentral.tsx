@@ -14,10 +14,11 @@ export const ContainerCentral = ({
   const [buttonSelected, setButtonSelected] = useState<string>(
     location.pathname
   );
+  const items = ["home", "search", "foruns", "more", "config"];
 
   useEffect(() => {
     const path = location.pathname.split("/")[1];
-    if (path !== "home" && path !== "search" && path !== "foruns") {
+    if (!items.includes(path) ) {
       setButtonSelected("profile");
     } else {
       setButtonSelected(path);

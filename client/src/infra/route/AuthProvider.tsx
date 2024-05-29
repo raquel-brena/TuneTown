@@ -1,5 +1,6 @@
 import { PropsWithChildren, useState } from "react";
 import { AuthContext } from "./UseAuth";
+import { User } from "../../domain/types/User";
 
 type AuthProviderProps = PropsWithChildren & {
   isSignedIn?: boolean;
