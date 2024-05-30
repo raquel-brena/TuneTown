@@ -29,7 +29,12 @@ export const Profile = () => {
                 <div className="flex justify-between px-6  pt-4 ">
                   <div className="flex flex-row items-center gap-2">
                     <Photo bg="d9d9d9" size="4" />
-                    <div className="flex flex-col">
+                    <div className="w-24 z-10 top-[4.5rem] left-16 absolute h-8
+                     bg-zinc-900 rounded-tr-xl rounded-bl-xl rounded-br-xl border p-0
+                      border-green-400 text-center text-sm font-semibold">
+                      @{profileId}
+                     </div>
+                    <div className="flex flex-col text-sm">
                       <span>
                         listen now <b> beautiful thins - benson boone</b>
                       </span>
