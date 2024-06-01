@@ -4,9 +4,10 @@ import { useState } from "react";
 import { MenuItem } from "../components/profile/MenuItem";
 import { ContainerPosts } from "../components/profile/ContainerPosts";
 import { Card } from "../components/posts/Card";
+
 export const Profile = () => {
     const { profileId } = useParams<{profileId: string}>();
-    const [selectedButton, setSelectedButton] = useState<string>("posts");
+    const [ selectedButton, setSelectedButton ] = useState<string>("posts");
 
     const items = ["posts", "foruns", "curtidas" ]
 
@@ -15,7 +16,7 @@ export const Profile = () => {
         <div
           className="h-full md:w-11/12 w-full rounded-lg border-box relative border-r-[1px] 
        border-stroke overflow-hidden border-collapse overflow-y-auto scroll-smooth scroll"
-        >
+        >          
           <>
             {/* PROFILE HEADER */}
             <div className="h-[30%] border-b-[1px] border-stroke ">
@@ -30,8 +31,8 @@ export const Profile = () => {
                   <div className="flex flex-row items-center gap-2">
                     <Photo bg="d9d9d9" size="4" />
                     <div className="w-24 z-10 top-[4.5rem] left-16 absolute h-8
-                     bg-zinc-900 rounded-tr-xl rounded-bl-xl rounded-br-xl border p-0
-                      border-green-400 text-center text-sm font-semibold">
+                     bg-fume rounded-tr-xl rounded-bl-xl rounded-br-xl border p-0
+                      border-theme text-center text-sm font-semibold">
                       @{profileId}
                      </div>
                     <div className="flex flex-col text-sm">
@@ -93,5 +94,4 @@ export const Profile = () => {
         </div>
       </div>
     );
-    
 };

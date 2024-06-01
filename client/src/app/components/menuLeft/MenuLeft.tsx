@@ -65,7 +65,7 @@ const items = {
       >
         <div
           className="h-[80%] flex md:flex-col md:bg-transparent 
-        flex-row bg-fume w-full sh-full gap-4 items-end"
+        flex-row bg-fume w-full sh-full gap-6 items-end"
         >
           {Object.values(items).map((item, index) => (
             <MenuLeftItem

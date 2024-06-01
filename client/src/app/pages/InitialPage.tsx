@@ -18,7 +18,8 @@ export const InitialPage = () => {
         blur-3xl opacity-5
         "
       />
-      <div className="size-[80%] rounded-full bg-[#68C56F]  -translate-x-[90%] translate-y-[80%] absolute 
+      <div
+        className="size-[80%] rounded-full bg-[#68C56F]  -translate-x-[90%] translate-y-[80%] absolute 
         blur-3xl opacity-5"
       />
       <div className="size-[100%] rounded-full blur-3xl  bg-purple-600  translate-x-[95%] translate-y-96 opacity-10 absolute" />
@@ -37,7 +38,10 @@ export const InitialPage = () => {
             Inscreva-se hoje
           </h1>
           <div className="justify-center overflow-hidden">
-            <Button onClick={() => window.open(AUTH_URL, "_blank")} bg="bg-white">
+            <Button
+              onClick={() => window.open(AUTH_URL, "_blank")}
+              bg="bg-white"
+            >
               <div className="flex text-[#161616] relative gap-3">
                 <div className=" relative h-auto size-6  md:flex ">
                   <img className="size-fit " src={spotify_logo} alt="Logo" />
@@ -61,23 +65,24 @@ export const InitialPage = () => {
             </Dialog.Trigger>
 
             <Dialog.Portal>
-              <Dialog.Overlay className="bg-[#292929] opacity-50 data-[state=open]:animate-overlayShow fixed inset-0" />
-              <Dialog.Content className=" bg-fume text-contrast stroke-stroke data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
-                <FormSignIn />
-
+              <Dialog.Overlay className="bg-[#292929]  opacity-50 data-[state=open]:animate-overlayShow fixed inset-0" />
+              <Dialog.Content className=" bg-fume border border-stroke text-contrast stroke-stroke data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
                 <Dialog.Close asChild>
-                  <button className="IconButton" aria-label="Close">
+                  <button className="flex self-end" aria-label="Close">
                     X
                   </button>
                 </Dialog.Close>
+
+                <FormSignUp />
               </Dialog.Content>
             </Dialog.Portal>
           </Dialog.Root>
 
           <p className="text-contrast text-justify text-xs outline-none pointer-events-none">
             Ao se inscrever, você concorda com os{" "}
-            <a className="underline">Termos de Serviço </a>e a <a className="underline">Política de Privacidade</a>, incluindo o Uso
-            de <a className="underline">Cookies</a>.
+            <a className="underline">Termos de Serviço </a>e a{" "}
+            <a className="underline">Política de Privacidade</a>, incluindo o
+            Uso de <a className="underline">Cookies</a>.
           </p>
 
           <Dialog.Root>
@@ -92,14 +97,13 @@ export const InitialPage = () => {
 
             <Dialog.Portal>
               <Dialog.Overlay className="bg-[#292929] opacity-50  data-[state=open]:animate-overlayShow fixed inset-0" />
-              <Dialog.Content className="text-contrast data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-fume stroke-stroke p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
-                <FormSignUp />
-
+              <Dialog.Content className="text-contrast border border-stroke data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-fume stroke-stroke p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
                 <Dialog.Close asChild>
-                  <button className="IconButton" aria-label="Close">
+                  <button className="flex self-end" aria-label="Close">
                     X
                   </button>
                 </Dialog.Close>
+                <FormSignIn />
               </Dialog.Content>
             </Dialog.Portal>
           </Dialog.Root>
