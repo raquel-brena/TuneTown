@@ -8,14 +8,14 @@ export default class UserGatewayHttp {
   url: string;
 
   constructor() {
-    this.url = "http://localhost:3000";
+    this.url = "http://localhost:3333/user";
     this.httpClient = new AxiosAdapter();
   }
 
   //constructor(readonly httpClient: HttpClient, readonly url: string) {}
 
   async getUsers(): Promise<User[]> {
-    const response = await this.httpClient.get(`${this.url}/users/`);
+    const response = await this.httpClient.get(`${this.url}/user/`);
     return response.data;
   }
 
@@ -24,13 +24,21 @@ export default class UserGatewayHttp {
     return response.data;
   }
 
-  async createUser(userData: any): Promise<any> {
-    const response = await this.httpClient.post(`${this.url}/users/`, userData);
+  async signUp(userData: any): Promise<any> {
+    const response = await this.httpClient.post(`${this.url}/user/`, userData);
+    return response.data;
+  }
+
+  async signIn(userData: any): Promise<any> {
+    const response = await this.httpClient.post(
+      `${this.url}/user/signin`,
+      userData
+    );
     return response.data;
   }
 
   async updateUser(userData: any): Promise<any> {
-    const response = await this.httpClient.put(`${this.url}/users/`, userData);
+    const response = await this.httpClient.put(`${this.url}/user/`, userData);
     return response.data;
   }
 }
