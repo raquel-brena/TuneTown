@@ -1,8 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
   provider = "prisma-client-js"
@@ -17,10 +12,10 @@ model User {
   id        String   @id @default(uuid())
   email     String   @unique
   name      String
+  username  String   @unique
   role      Role     @default(USER)
   password  String
   Profile   Profile?
-  posts     Post[]
   createdAt DateTime @default(now())
 }
 
@@ -28,9 +23,23 @@ model Profile {
   id        String   @id @default(uuid())
   userId    String   @unique
   user      User     @relation(fields: [userId], references: [id])
-  bio       String
-  image     String
+  bio String?
+  avatarUrl String?
+  favoriteSong String?
+  posts        Post[]
+  comments        Comment[]
+  following     Follow[] @relation("Following")
+  followers     Follow[] @relation("Followers")
   createdAt DateTime @default(now())
+}
+
+model Follow {
+  id           String   @id @default(uuid())
+  followerId   String
+  follower     Profile     @relation(name: "Followers", fields: [followerId], references: [id])
+  followingId  String
+  following    Profile  @relation(name: "Following", fields: [followingId], references: [id])
+  createdAt    DateTime @default(now())
 }
 
 model Post {
@@ -39,7 +48,7 @@ model Post {
   content   String
   comments  Comment[]
   authorId  String
-  author    User      @relation(fields: [authorId], references: [id])
+  author    Profile      @relation(fields: [authorId], references: [id])
   createdAt DateTime  @default(now())
 }
 
@@ -48,6 +57,8 @@ model Comment {
   title   String
   content String
   postId  String
+  authorId String
+  author Profile @relation(fields: [authorId], references: [id])
   post    Post   @relation(fields: [postId], references: [id])
 }
 
