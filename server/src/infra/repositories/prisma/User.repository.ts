@@ -61,9 +61,42 @@ export class UserRepository implements IUsersRepository {
     return null;
   }
 
-  findByEmail(email: string): Promise<User | null> {
-    throw new Error("Method not itedsadadsstented.");
+  async findByEmail(email: string): Promise<UserEntity | null> {
+    try {
+      const user = await prisma.user.findUnique({
+        where: {
+          email,
+        },
+        include: {
+          Profile: {
+            select: {
+              id: true,
+            },
+          }
+        },
+      });
+
+      if (!user) {
+        return null;
+      }
+
+      const userEntity: UserEntity = {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        username: user.username,
+        profileId: user.Profile!.id,
+        password: user.password,
+        createdAt: user.createdAt.toISOString(),
+      };
+      
+      return userEntity;
+
+    } catch (error: any) {
+      throw new Error(error.message);
+    }
   }
+
   findById(id: string): Promise<UserResponseDTO | null> {
     throw new Error("Method not implemented.");
   }
