@@ -7,8 +7,8 @@ import { Profile } from './app/pages/Profile.tsx';
 import { InitialPage } from './app/pages/InitialPage.tsx';
 import { ContainerCentral } from './app/pages/ContainerCentral.tsx';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import AuthProvider from './infra/route/AuthProvider.tsx';
-import { ProtectedComponent } from './infra/route/ProtectedRoute.tsx';
+import AuthProvider from "./infra/contexts/auth/AuthProvider.tsx";
+import { ProtectedComponent } from './infra/contexts/auth/ProtectedRoute.tsx';
 import { Feed } from './app/pages/Feed.tsx';
 
 const router = createBrowserRouter([
