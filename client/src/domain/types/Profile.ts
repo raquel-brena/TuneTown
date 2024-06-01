@@ -1,17 +1,18 @@
+import { Post } from "./Post";
 import { UserEntity } from "./User";
 
 export type Profile = {
-  username: string;
+  userId: string;
   bio?: string | null;
   favoriteSong?: string | null;
   avatarUrl?: string | null;
-  followers: UserEntity[];
-  following: UserEntity[];
+  posts: Post[] | null;
+  followers: UserEntity[] | null;
+  following: UserEntity[] | null;
 };
 
 export type ProfileEntity = Profile & {
-  id: string;
-  userId: string;
+  id: number;
   lastLoginAt: string;
   createdAt: string;
   updatedAt: string;
