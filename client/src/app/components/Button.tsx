@@ -1,16 +1,15 @@
 
-interface ButtonProps {
+interface ButtonProps extends React.InputHTMLAttributes<HTMLInputElement> {
   full?: boolean;
   onClick?: () => void;
   bg?: string;
   children: React.ReactNode;
 }
 
-export const Button = ({  full, bg,  onClick, children }: ButtonProps) => {
+export const Button = ({  full, bg,  onClick, children, ...props }: ButtonProps) => {
   return (
     <button
-      type="button"
-      onClick={onClick}
+      //onClick={onClick}
       className={`flex items-center border font-semibold justify-center text-center 
     ${
       full
