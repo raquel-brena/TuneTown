@@ -2,15 +2,13 @@ import { PropsWithChildren, useEffect, useState } from "react";
 import { AuthContext } from "./UseAuth";
 import AxiosAdapter from "../../http/AxiosAdapter";
 import { User } from "../../../domain/types/User";
+import { signUpRequest } from "../../../app/services/auth/signUpRequest";
+import { signInRequest } from "../../../app/services/auth/signInRequest";
+import { UserLoginDTO } from "../../../domain/types/Auth";
 
 type AuthProviderProps = PropsWithChildren & {
   isSignedIn?: boolean;
 };
-
-type AuthData = {
-  email: string,
-  password: string,
-}
 
 export default function AuthProvider({
   children
@@ -32,23 +30,22 @@ export default function AuthProvider({
       setLoading(false);
     }, []);
   
-      async function handleLogin({email, password} : AuthData) {
-        const {
-          data: { token, user },
-        } = await httpClient.post("/authenticate", { email, password });
-        localStorage.setItem("token", JSON.stringify(token));
-        httpClient.setHeaders( `Bearer ${token}`)
-        setUser(user);
+      async function handleLogin({email, password} : UserLoginDTO) {
+      setLoading(true)
+
+      const data =  await signInRequest({email, password})
+      console.log("data: ", data)
+      localStorage.setItem("token", JSON.stringify(data.token));
+      httpClient.setHeaders( `Bearer ${data.token}`);
+
+          setUser(data.user);
+          setLoading(false);
       }
 
       function handleLogout() {
         setUser(null);
         localStorage.removeItem("token");
         httpClient.setHeaders(undefined);
-      }
-  
-      if (loading) {
-        return <p>Loading...</p>;
       }
 
   return <AuthContext.Provider value={{loading, user, handleLogin, handleLogout
