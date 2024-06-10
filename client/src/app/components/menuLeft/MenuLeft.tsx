@@ -13,6 +13,8 @@ import {
   config2
 } from "../../assets/left_menu";
 import { useEffect, useState } from "react";
+import { useAuth } from "../../../infra/contexts/auth/UseAuth";
+
 
 type MenuLeftProps = {
   buttonSelected: string;
@@ -26,6 +28,7 @@ export const MenuLeft = ({
 }: MenuLeftProps) => {
   
   const [theme, setTheme] = useState<string>("light");
+const { user } = useAuth();
 
   useEffect(() => {
     setTheme(localStorage.getItem("theme")!);
@@ -47,7 +50,7 @@ const items = {
   profile: {
     src: theme === "light" ? profile2 : profile,
     alt: "profile",
-    to: `/@${5}`,
+    to: `/${user?.username}`,
   },
   more: { src: theme === "light" ? more : more2, alt: "more", to: "/more" },
 };
