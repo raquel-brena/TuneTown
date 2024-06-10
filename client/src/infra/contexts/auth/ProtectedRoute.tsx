@@ -7,20 +7,15 @@ type ProtectedComponentProps = PropsWithChildren & {
 }
 
 export const ProtectedComponent = ({ children, isPrivate }: ProtectedComponentProps) => {
-    const { loading, user } = useAuth();
+    const { user, handleLogout } = useAuth();
 
     const navigate = useNavigate();
 
-    if (loading) {
-        return <p> Loading...</p>;
-    }
-
     useEffect(() => {
-        if (user == null || (isPrivate && !user)){
-            navigate('/', {replace: true})
-        } else {
-            navigate(`/${user.username}`);
-        }
+         if (user == null || (isPrivate && !user)) {
+           handleLogout();
+           navigate("/", { replace: true });
+         }
     }, [navigate, user])
 
     return (
