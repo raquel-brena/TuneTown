@@ -4,8 +4,10 @@ import { useState } from "react";
 import { MenuItem } from "../components/profile/MenuItem";
 import { ContainerPosts } from "../components/profile/ContainerPosts";
 import { Card } from "../components/posts/Card";
+import { useAuth } from "../../infra/contexts/auth/UseAuth";
 
 export const Profile = () => {
+  const { user } = useAuth();
     const { profileId } = useParams<{profileId: string}>();
     const [ selectedButton, setSelectedButton ] = useState<string>("posts");
 
@@ -16,13 +18,13 @@ export const Profile = () => {
         <div
           className="h-full md:w-11/12 w-full rounded-lg border-box relative border-r-[1px] 
        border-stroke overflow-hidden border-collapse overflow-y-auto scroll-smooth scroll"
-        >          
+        >
           <>
             {/* PROFILE HEADER */}
             <div className="h-[30%] border-b-[1px] border-stroke ">
               {/* BACK */}
               <div className="h-1/6 border-b-[1px] border-stroke ">
-                @{profileId}
+                @{user?.username}
               </div>
               {/* HEADER */}
               <div className="flex flex-col relative h-[84%] justify-between">
@@ -30,11 +32,13 @@ export const Profile = () => {
                 <div className="flex justify-between px-6  pt-4 ">
                   <div className="flex flex-row items-center gap-2">
                     <Photo bg="d9d9d9" size="4" />
-                    <div className="w-24 z-10 top-[4.5rem] left-16 absolute h-8
+                    <div
+                      className="w-24 z-10 top-[4.5rem] left-16 absolute h-8
                      bg-fume rounded-tr-xl rounded-bl-xl rounded-br-xl border p-0
-                      border-theme text-center text-sm font-semibold">
-                      @{profileId}
-                     </div>
+                      border-theme text-center text-sm font-semibold"
+                    >
+                      @{user?.username}
+                    </div>
                     <div className="flex flex-col text-sm">
                       <span>
                         listen now <b> beautiful thins - benson boone</b>
