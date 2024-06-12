@@ -3,11 +3,13 @@ export type AuthProvider = {
 }
 
 export type UserLoginDTO = {
-  username: string;
+  email: string;
   password: string;
 };
 
-export type UserRegisterDTO = UserLoginDTO & {
+export type UserRegisterDTO =  {
   name: string;
   email: string;
+  username: string;
+  password: string;
 };
