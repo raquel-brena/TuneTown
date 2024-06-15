@@ -7,17 +7,23 @@ services:
       context: ./server
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "3333:3333"
     depends_on:
       - postgres
+    volumes:
+      - ./server:/app
+      - /app/node_modules
     environment:
-      - DATABASE_URL=postgresql://user:password@postgres:5432/web_db
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/web_db
 
   client:
     container_name: client
     build:
       context: ./client
       dockerfile: Dockerfile
+    volumes:
+      - ./client:/app
+      - /app/node_modules
     ports:
       - "3000:3000"
     depends_on:
@@ -31,8 +37,8 @@ services:
       - "5432:5432"
     environment:
       POSTGRES_DB: web_db
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
