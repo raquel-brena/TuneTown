@@ -36,12 +36,12 @@ export class UserController implements IController {
       });
 
       if (newUser === null) {
-        return res.status(400).json({ message: "User not created" });
+        return res.status(208).json({ message: "User not created" });
       }
 
       return res.status(201).json({ user: newUser.username });
     } catch (error: any) {
-      return res.status(400).json({ message: error.message });
+      return res.status(206).json({ message: error.message });
     }
   }
 
