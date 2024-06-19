@@ -2,14 +2,14 @@ import { User } from "@prisma/client";
 import { sign } from "jsonwebtoken";
 import { UserEntity } from "../../../domain/types/User.types";
 
-export function generateToken(user : UserEntity) {
+export function generateToken(user: UserEntity) {
   const secretKey = process.env.API_SECRET;
 
   if (!secretKey) {
-    throw new Error("API_SECRET is missing");
+    console.log('no secret')
   }
 
-  const generatedToken = sign(user, secretKey, {
+  const generatedToken = sign(user, secretKey || 'secret', {
     expiresIn: "1h",
   })
 
