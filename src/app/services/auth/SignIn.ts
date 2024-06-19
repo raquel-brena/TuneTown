@@ -15,11 +15,12 @@ export class SignIn {
     password,
   }: AuthUser): Promise<AuthUserResponse | null> {
 
+    try {
       const userRepository = new UserRepository();
       const userEntity = await userRepository.findByEmail(email);
 
       if (!userEntity) {
-        throw new Error("User not exists");
+        throw new Error("Usuário não encontrado");
       }
       const isPasswordCorrect = await comparePasswords({
         password,
@@ -27,12 +28,16 @@ export class SignIn {
       });
 
       if (!isPasswordCorrect) {
-        throw new Error("Password incorrect");
+        throw new Error("Senha incorreta");
       }
 
       const token = generateToken(userEntity);
 
       return { token, user: userEntity };
-    
+
+    } catch (error: any) {
+      throw new Error(error.message);
+    }
+
   }
 }

@@ -9,27 +9,32 @@ export async function SignUp({
   username,
   password,
 }: CreateUserDTO): Promise<UserResponseDTO> {
-    
-  const userRepository = new UserRepository();
-  const ifExists = await userRepository.findByEmail(email);
 
-  if (ifExists) {
-    throw new Error("User already exists");
+  try {
+    const userRepository = new UserRepository();
+    const ifExists = await userRepository.findByEmail(email);
+
+    if (ifExists) {
+      throw new Error("User already exists");
+    }
+
+    const hasher: string = await passwordHasher(password);
+
+    const createUser = new CreateUser();
+    const user: UserResponseDTO | null = await createUser.execute({
+      name,
+      email,
+      username,
+      password: hasher,
+    });
+
+    if (!user) {
+      throw new Error("User not created");
+    }
+
+    return user;
+  } catch (error: any) {
+    throw new Error(error.message);
   }
 
-  const hasher: string = await passwordHasher(password);
-
-  const createUser = new CreateUser();
-  const user: UserResponseDTO | null = await createUser.execute({
-    name,
-    email,
-    username,
-    password: hasher,
-  });
-
-  if (!user) {
-    throw new Error("User not created");
-  }
-
-  return user;
 }
