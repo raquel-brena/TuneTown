@@ -11,23 +11,23 @@ import { Request, Response } from "express";
 
 
 export class AuthController {
-   
+
   async signIn(req: Request, res: Response) {
     const { email, password }: AuthUser = req.body as unknown as AuthUser;
     try {
       const authenticateUser = new SignIn();
 
-          const response: AuthUserResponse | null =
-            await authenticateUser.execute({
-              email,
-              password,
-            })
+      const response: AuthUserResponse | null =
+        await authenticateUser.execute({
+          email,
+          password,
+        })
 
-          if (response === null) {
-            return res.status(400).json({ message: "User not found" });
-          }
+      if (response === null) {
+        return res.status(400).json({ message: "Usuário não encontrado" });
+      }
 
-      return res.status(200).json({ token: response.token, user: response.user});
+      return res.status(200).json({ token: response.token, user: response.user });
 
     } catch (error: any) {
       return res.status(400).json({ message: error.message });
@@ -48,7 +48,7 @@ export class AuthController {
       });
 
       if (newUser === null) {
-        return res.status(400).json({ message: "User not created" });
+        return res.status(400).json({ message: "Usuário não criado" });
       }
       return res.status(201).json({ user: newUser.username });
     } catch (error: any) {
