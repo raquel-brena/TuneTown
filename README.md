@@ -1,10 +1,20 @@
-# Rede Social Simples - Desenvolvimento de Sistemas Web I
+# TuneTown - Desenvolvimento de Sistemas Web I
 
-Este é um projeto simples de uma rede social desenvolvido como parte do curso "Desenvolvimento de Sistemas Web I" na Universidade Federal do Rio Grande do Norte (UFRN).
+<p align="center">
+  <img src="https://github.com/raquel-brena/TuneTown/assets/108936463/03cf6ac1-26af-4b77-853d-7845f42e3695" width="150" title="TuneTown logo">
+  <div align="center">
+    <a href="https://www.figma.com/file/iVpO60XiZhKMpQHhY1grHQ/TuneTown%2C-web?type=design&node-id=227%3A1116&mode=design&t=xxiYHaZKLoFouYhh-1" title="Figma Project"> 🎨 Figma Project</a> ·
+    <a href="https://github.com/raquel-brena/TuneTown/issues" title="Report Bug"> Report Bug</a> ·
+    <a href="https://github.com/raquel-brena/TuneTown/issues" title="Request Feature">Request Feature</a>
+  </div>
+</p>
 
-## Descrição do Projeto
+## Description
 
-Aplicação web de uma rede social simples construída utilizando React.js com Vite como bundler.
+TuneTown is a simple application for friends to connect and share their favorite songs using the Spotify API. This is a project for the Web Development I course
+
+![cover](https://github.com/raquel-brena/TuneTown-backend/assets/108936463/4dd0dd80-26fc-42c2-8af7-cfff32b03e6d)
+
 
 ## Como Executar
 
