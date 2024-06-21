@@ -15,7 +15,7 @@ model User {
   username  String   @unique
   role      Role     @default(USER)
   password  String
-  Profile   Profile?
+  profile   Profile?
   createdAt DateTime @default(now())
 }
 

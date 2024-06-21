@@ -1,17 +1,22 @@
-import { Profile } from "@prisma/client";
-import e from "express";
+import { Profile } from "./Profile.types";
+
 
 export type User = {
   email: string;
   name: string;
+  password: string;
   username: string;
 };
 
 export type UserEntity = User & {
   id: string;
-  password: string;
-  profileId: string;
+  profile: Profile;
   createdAt: string;
+};
+
+
+export type UserWithProfile = User & {
+  profile: Profile;
 };
 
 export type UserResponseDTO = User & {
@@ -39,5 +44,6 @@ export type AuthUser = {
 
 export type AuthUserResponse = {
   token: string;
-  user: UserEntity;
+  user: UserWithProfile;
 };
+

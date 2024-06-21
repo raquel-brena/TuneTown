@@ -1,8 +1,6 @@
 import {
   AuthUser,
   AuthUserResponse,
-  CreateUserDTO,
-  UserResponseDTO,
 } from "../../../domain/types/User.types";
 import { UserRepository } from "../../../infra/repositories/prisma/User.repository";
 import { comparePasswords } from "../auth/ComparePasswords";
@@ -22,6 +20,7 @@ export class SignIn {
       if (!userEntity) {
         throw new Error("Usuário não encontrado");
       }
+      
       const isPasswordCorrect = await comparePasswords({
         password,
         hashedPassword: userEntity.password,

@@ -5,6 +5,7 @@ import {
   User,
   UserEntity,
   UserResponseDTO,
+  UserWithProfile,
 } from "../../../domain/types/User.types";
 import { prisma } from "../../database/prisma";
 
@@ -31,7 +32,7 @@ export class UserRepository implements IUsersRepository {
           username,
           name,
           password,
-          Profile: {
+          profile: {
             create: {
               bio: "",
               favoriteSong: "",
@@ -40,7 +41,7 @@ export class UserRepository implements IUsersRepository {
           },
         },
         include: {
-          Profile: true,
+          profile: true,
         },
       });
 
@@ -52,27 +53,34 @@ export class UserRepository implements IUsersRepository {
         email: user.email,
         username: user.username,
         name: user.name,
-        profileId: user.Profile!.id,
+        password: user.password,
+        profileId: user.profile!.id,
         createdAt: user.createdAt.toISOString(),
       };
     } catch (error: any) {
       throw new Error(error.message);
     }
-    return null;
   }
 
-  async findByEmail(email: string): Promise<UserEntity | null> {
+  async findByEmail(email: string): Promise<UserWithProfile | null> {
     try {
       const user = await prisma.user.findUnique({
         where: {
           email,
         },
         include: {
-          Profile: {
+          profile: {
             select: {
               id: true,
+              userId: true,
+              bio: true,
+              favoriteSong: true,
+              avatarUrl: true,
+              posts: true,
+              followers: true,
+              following: true,
             },
-          }
+          },
         },
       });
 
@@ -80,17 +88,24 @@ export class UserRepository implements IUsersRepository {
         return null;
       }
 
-      const userEntity: UserEntity = {
-        id: user.id,
+      const userWithProfile: UserWithProfile = {
         email: user.email,
         name: user.name,
         username: user.username,
-        profileId: user.Profile!.id,
         password: user.password,
-        createdAt: user.createdAt.toISOString(),
+        profile: {
+          id: user.profile!.id,
+          userId: user.profile!.userId,
+          bio: user.profile!.bio,
+          favoriteSong: user.profile!.favoriteSong,
+          avatarUrl: user.profile!.avatarUrl,
+          posts: user.profile!.posts,
+          followers: user.profile!.followers,
+          following: user.profile!.following,
+        },
       };
       
-      return userEntity;
+      return userWithProfile;
 
     } catch (error: any) {
       throw new Error(error.message);
