@@ -1,4 +1,4 @@
-# TuneTown - Desenvolvimento de Sistemas Web I
+# TuneTown - Web I
 
 <p align="center">
   <img src="https://github.com/raquel-brena/TuneTown/assets/108936463/03cf6ac1-26af-4b77-853d-7845f42e3695" width="150" title="TuneTown logo">
@@ -11,7 +11,7 @@
 
 ## Description
 
-TuneTown is a simple application for friends to connect and share their favorite songs using the Spotify API. This is a project for the Web Development I course
+TuneTown is a simple application for friends to connect and share their favorite songs using the Spotify API. This is a project for the Web Development I course. This is the backend! Find the frontend here:
 
 ![cover](https://github.com/raquel-brena/TuneTown-backend/assets/108936463/4dd0dd80-26fc-42c2-8af7-cfff32b03e6d)
 
