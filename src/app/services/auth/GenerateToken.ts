@@ -5,10 +5,6 @@ import { UserEntity, UserWithProfile } from "../../../domain/types/User.types";
 export function generateToken(user: UserWithProfile) {
   const secretKey = process.env.API_SECRET;
 
-  if (!secretKey) {
-    console.log("no secret");
-  }
-
   const generatedToken = sign(user, secretKey || "secret", {
     expiresIn: "1h",
   });

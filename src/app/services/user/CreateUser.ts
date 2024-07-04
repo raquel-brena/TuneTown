@@ -1,4 +1,5 @@
 import {
+  CreateUserAndProfileDTO,
   CreateUserDTO,
   UserResponseDTO,
 } from "../../../domain/types/User.types";
@@ -11,7 +12,10 @@ export class CreateUser {
     email,
     username,
     password,
-  }: CreateUserDTO): Promise<UserResponseDTO | null> {
+    avatarUrl,
+    refreshToken, 
+    accessToken,
+  }: CreateUserAndProfileDTO): Promise<UserResponseDTO | null> {
     try {
       const userRepository = new UserRepository();
 
@@ -20,6 +24,9 @@ export class CreateUser {
         email,
         username,
         password,
+        avatarUrl,
+        refreshToken, 
+        accessToken
       });
 
       if (!user) {

@@ -1,7 +1,6 @@
 import { Post } from "@prisma/client";
 
 export type Profile = {
-  id: string;
   userId: string;
   bio?: string | null;
   favoriteSong?: string | null;
@@ -12,7 +11,7 @@ export type Profile = {
 };
 
 export type ProfileEntity = Profile & {
-  id: number;
+  id: string;
   lastLoginAt: string;
   createdAt: string;
   updatedAt: string;

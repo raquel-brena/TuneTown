@@ -1,7 +1,6 @@
 import { IUsersRepository } from "../../../app/repositories/IUserRepository";
 import {
   CreateUserAndProfileDTO,
-  CreateUserDTO,
   User,
   UserEntity,
   UserResponseDTO,
@@ -15,7 +14,8 @@ export class UserRepository implements IUsersRepository {
     name,
     username,
     password,
-  }: CreateUserDTO): Promise<UserResponseDTO> {
+    avatarUrl,
+  }: CreateUserAndProfileDTO): Promise<UserResponseDTO> {
     throw new Error("Method not implemented.");
   }
 
@@ -24,7 +24,11 @@ export class UserRepository implements IUsersRepository {
     name,
     username,
     password,
+    avatarUrl,
+    refreshToken,
+    accessToken
   }: CreateUserAndProfileDTO): Promise<UserResponseDTO | null> {
+
     try {
       const user = await prisma.user.create({
         data: {
@@ -32,11 +36,17 @@ export class UserRepository implements IUsersRepository {
           username,
           name,
           password,
+          userToken: {
+            create: {
+              refreshToken: refreshToken ? refreshToken : "",
+              accessToken: accessToken ? accessToken : "",
+            },
+          },
           profile: {
             create: {
               bio: "",
               favoriteSong: "",
-              avatarUrl: "",
+              avatarUrl: avatarUrl,
             },
           },
         },
@@ -55,6 +65,7 @@ export class UserRepository implements IUsersRepository {
         name: user.name,
         password: user.password,
         profileId: user.profile!.id,
+        avatarUrl: user.profile!.avatarUrl,
         createdAt: user.createdAt.toISOString(),
       };
     } catch (error: any) {
@@ -94,7 +105,6 @@ export class UserRepository implements IUsersRepository {
         username: user.username,
         password: user.password,
         profile: {
-          id: user.profile!.id,
           userId: user.profile!.userId,
           bio: user.profile!.bio,
           favoriteSong: user.profile!.favoriteSong,
@@ -104,9 +114,8 @@ export class UserRepository implements IUsersRepository {
           following: user.profile!.following,
         },
       };
-      
-      return userWithProfile;
 
+      return userWithProfile;
     } catch (error: any) {
       throw new Error(error.message);
     }

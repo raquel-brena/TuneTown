@@ -9,7 +9,6 @@ import { SignUp } from "../services/auth/SignUp";
 import { SignIn } from "../services/auth/SignIn";
 import { Request, Response } from "express";
 
-
 export class AuthController {
 
   async signIn(req: Request, res: Response) {
@@ -17,26 +16,29 @@ export class AuthController {
     try {
       const authenticateUser = new SignIn();
 
-      const response: AuthUserResponse | null =
-        await authenticateUser.execute({
-          email,
-          password,
-        })
+      const response: AuthUserResponse | null 
+      = await authenticateUser.execute({
+        email,
+        password,
+      });
 
+      
       if (response === null) {
         return res.status(400).json({ message: "Usuário não encontrado" });
       }
 
-      return res.status(200).json({ token: response.token, user: response.user });
-
+      return res
+        .status(200)
+        .json({ token: response.token, user: response.user });
     } catch (error: any) {
       return res.status(400).json({ message: error.message });
     }
   }
 
-
   async signUp(req: Request, res: Response) {
-    const { email, name, username, password }: CreateUserAndProfileDTO =
+    const { email, name, username, 
+      password, avatarUrl, refreshToken, 
+      accessToken }: CreateUserAndProfileDTO =
       req.body as unknown as CreateUserDTO;
 
     try {
@@ -45,6 +47,9 @@ export class AuthController {
         email,
         username,
         password,
+        avatarUrl,
+        refreshToken, 
+        accessToken
       });
 
       if (newUser === null) {
@@ -55,4 +60,5 @@ export class AuthController {
       return res.status(400).json({ message: error.message });
     }
   }
+
 }

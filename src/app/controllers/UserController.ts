@@ -22,17 +22,19 @@ export class UserController implements IController {
   }
 
   async createUserAndProfile(req: Request, res: Response) {
-    const { email, name, username, password }: CreateUserAndProfileDTO =
+    const { email, name, username, password, avatarUrl }: CreateUserAndProfileDTO =
       req.body as unknown as CreateUserDTO;
 
     try {
       const createUser = new CreateUser();
 
+  
       const newUser: UserResponseDTO | null = await createUser.execute({
         name,
         email,
         username,
         password,
+        avatarUrl
       });
 
       if (newUser === null) {

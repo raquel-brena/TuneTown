@@ -1,4 +1,4 @@
-import { CreateUserDTO, User, UserResponseDTO } from "../../../domain/types/User.types";
+import { CreateUserAndProfileDTO, CreateUserDTO, User, UserResponseDTO } from "../../../domain/types/User.types";
 import { UserRepository } from "../../../infra/repositories/prisma/User.repository";
 import { CreateUser } from "../user/CreateUser";
 import { passwordHasher } from "./PasswordHasher";
@@ -8,7 +8,10 @@ export async function SignUp({
   email,
   username,
   password,
-}: CreateUserDTO): Promise<UserResponseDTO> {
+  avatarUrl,
+  accessToken, 
+  refreshToken
+}: CreateUserAndProfileDTO): Promise<UserResponseDTO> {
 
   try {
     const userRepository = new UserRepository();
@@ -26,6 +29,9 @@ export async function SignUp({
       email,
       username,
       password: hasher,
+      avatarUrl,
+      accessToken,
+      refreshToken,
     });
 
     if (!user) {

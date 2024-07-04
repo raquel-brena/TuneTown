@@ -21,14 +21,19 @@ export type UserWithProfile = User & {
 
 export type UserResponseDTO = User & {
   profileId: string;
+  avatarUrl: string | null;
   createdAt: string;
 };
 
 export type CreateUserDTO = User & {
   password: string;
+  accessToken?: string | null;
+  refreshToken?: string | null;
 };
 
-export type CreateUserAndProfileDTO = CreateUserDTO & {};
+export type CreateUserAndProfileDTO = CreateUserDTO & {
+  avatarUrl?: string | null;
+};
 
 export type UpdateUserDTO = {
   email?: string | null;
