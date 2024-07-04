@@ -6,7 +6,7 @@ const indexRouter = express.Router();
 indexRouter.get(
   "/",
   function (req: Request, res: Response, next: NextFunction) {
-    res.render("index", { title: "Express" });
+    res.json({ message: "Hello World" });
   }
 );
 
