@@ -15,8 +15,18 @@ model User {
   username  String   @unique
   role      Role     @default(USER)
   password  String
+  userToken  UserToken? 
   profile   Profile?
   createdAt DateTime @default(now())
+}
+
+model UserToken { 
+  id          String   @id @default(uuid())
+  userId       String @unique
+  user         User     @relation(fields: [userId], references: [id])
+  accessToken  String?
+  refreshToken String?
+  createdAt    DateTime @default(now())
 }
 
 model Profile {
