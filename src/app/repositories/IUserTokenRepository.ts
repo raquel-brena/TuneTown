@@ -1,7 +1,7 @@
-import { UserToken } from "../../domain/types/UserToken.types";
+import { UserSpotifyToken, UserSpotifyTokenEntity } from "../../domain/types/Auth.types";
 
 export interface IUserTokenRepository {
-  createUserToken(userTokenRequest: UserToken): Promise<string>;
-  findUserByToken(tokenId: string): Promise<string | null>;
-  updateUserToken(userTokenRequest: UserToken): Promise<string>;
+  createUserToken(userTokenRequest: UserSpotifyToken): Promise<{userTokenId: string}>;
+  findUserByToken(userTokenId: string): Promise< UserSpotifyTokenEntity | null>;
+  updateUserToken(userTokenRequest: UserSpotifyToken): Promise<{userTokenId: string}>;
 }

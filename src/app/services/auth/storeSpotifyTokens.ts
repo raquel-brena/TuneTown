@@ -1,35 +1,17 @@
-import { AuthUser, AuthUserResponse } from "../../../domain/types/User.types";
-import { UserRepository } from "../../../infra/repositories/prisma/User.repository";
-import { comparePasswords } from "../auth/ComparePasswords";
-import { generateToken } from "../auth/GenerateToken";
 
-export class storeSpotifyTokens {
-  async execute({
-    email,
-    password,
-  }: AuthUser): Promise<AuthUserResponse | null> {
-    try {
-      const userRepository = new UserRepository();
-      const userEntity = await userRepository.findByEmail(email);
 
-      if (!userEntity) {
-        throw new Error("Usuário não encontrado");
-      }
-
-      const isPasswordCorrect = await comparePasswords({
-        password,
-        hashedPassword: userEntity.password,
-      });
-
-      if (!isPasswordCorrect) {
-        throw new Error("Senha incorreta");
-      }
-
-      const token = generateToken(userEntity);
-
-      return { token, user: userEntity };
-    } catch (error: any) {
-      throw new Error(error.message);
-    }
+import { UserSpotifyToken } from "../../../domain/types/Auth.types";
+import { UserTokenRepository } from "../../../infra/repositories/prisma/UserToken.repository";
+export async function StoreSpotifyTokens({
+  refreshToken,
+  accessToken,
+  userId
+}: UserSpotifyToken): Promise<any | null> {
+  try {
+    const userTokenRepository = new UserTokenRepository();
+    return await userTokenRepository.createUserToken({ refreshToken, accessToken, userId })
+  } catch (error: any) {
+    throw new Error(error.message);
   }
 }
+

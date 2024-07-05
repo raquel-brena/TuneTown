@@ -13,7 +13,7 @@ authRoutes.post("/signup", (req: Request, res: Response) =>
 );
 
 authRoutes.post("/spotifyTokens", (req: Request, res: Response) =>
-  authController.spotifyTokens(req, res)
+  authController.storeSpotifyTokens(req, res)
 );
 
 export default authRoutes;

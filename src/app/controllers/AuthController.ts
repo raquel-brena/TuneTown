@@ -7,6 +7,7 @@ import { SignUp } from "../services/auth/SignUp";
 import { SignIn } from "../services/auth/SignIn";
 import { Request, Response } from "express";
 import { AuthUser, AuthUserResponse, UserSpotifyToken } from "../../domain/types/Auth.types";
+import { StoreSpotifyTokens } from "../services/auth/StoreSpotifyTokens";
 
 export class AuthController {
 
@@ -15,11 +16,11 @@ export class AuthController {
     try {
       const authenticateUser = new SignIn();
 
-      const response: AuthUserResponse | null 
-      = await authenticateUser.execute({
-        email,
-        password,
-      });
+      const response: AuthUserResponse | null
+        = await authenticateUser.execute({
+          email,
+          password,
+        });
 
       console.log(response);
       if (response === null) {
@@ -34,8 +35,8 @@ export class AuthController {
   }
 
   async signUp(req: Request, res: Response) {
-    const { email, name, username, 
-      password, avatarUrl, refreshToken, 
+    const { email, name, username,
+      password, avatarUrl, refreshToken,
       accessToken }: CreateUserAndProfileDTO =
       req.body as unknown as CreateUserDTO;
 
@@ -46,7 +47,7 @@ export class AuthController {
         username,
         password,
         avatarUrl,
-        refreshToken, 
+        refreshToken,
         accessToken
       });
 
@@ -59,20 +60,19 @@ export class AuthController {
     }
   }
 
-  async spotifyTokens(req: Request, res: Response) {
-    const { refreshToken, accessToken }:  =
+  async storeSpotifyTokens(req: Request, res: Response) {
+    const { refreshToken, accessToken, userId }: UserSpotifyToken =
       req.body as UserSpotifyToken;
 
     try {
-      const storedTokens = await storeSpotifyTokens({
-        refreshToken, 
-        accessToken
+      const storedTokens = await StoreSpotifyTokens({
+        refreshToken,
+        accessToken,
+        userId
       });
 
-      if (newUser === null) {
-        return res.status(400).json({ message: "Usuário não criado" });
-      }
-      return res.status(201).json({ user: newUser.username });
+
+      return res.status(201).json();
     } catch (error: any) {
       return res.status(400).json({ message: error.message });
     }

@@ -1,13 +1,10 @@
-import {
-  AuthUser,
-  AuthUserResponse,
-} from "../../../domain/types/User.types";
+
+import { AuthUser, AuthUserResponse } from "../../../domain/types/Auth.types";
 import { UserRepository } from "../../../infra/repositories/prisma/User.repository";
 import { comparePasswords } from "../auth/ComparePasswords";
 import { generateToken } from "../auth/GenerateToken";
 
 export class SignIn {
-
   async execute({
     email,
     password,

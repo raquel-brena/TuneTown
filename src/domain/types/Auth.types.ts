@@ -1,11 +1,12 @@
 import { UserWithProfile } from "./User.types";
 
 export type UserSpotifyToken = {
-  accessToken: string;
-  refreshToken: string;
+  userId: string;
+  accessToken: string | null;
+  refreshToken: string | null;
 };
 
-export type UseraSpotifyTokenEntity = UserSpotifyToken & {
+export type UserSpotifyTokenEntity = UserSpotifyToken & {
   id: string;
   createdAt: string;
 };
