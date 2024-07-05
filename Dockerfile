@@ -19,4 +19,4 @@ COPY . .
 # Expose port 8080 for the server application
 EXPOSE 3333
 
-CMD npx prisma migrate dev && npx prisma generate && npm run dev
+CMD npx prisma migrate dev -n refactorProfile && npx prisma generate && npm run dev
