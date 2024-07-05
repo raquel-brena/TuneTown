@@ -12,5 +12,8 @@ authRoutes.post("/signup", (req: Request, res: Response) =>
   authController.signUp(req, res)
 );
 
+authRoutes.post("/spotifyTokens", (req: Request, res: Response) =>
+  authController.spotifyTokens(req, res)
+);
 
 export default authRoutes;

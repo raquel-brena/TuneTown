@@ -28,7 +28,6 @@ export class UserController implements IController {
     try {
       const createUser = new CreateUser();
 
-  
       const newUser: UserResponseDTO | null = await createUser.execute({
         name,
         email,

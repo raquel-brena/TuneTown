@@ -27,7 +27,6 @@ app.use(function (req: Request, res: Response, next: NextFunction) {
 
 app.set("view engine", "ejs");
 
-
 // error handler
 app.use(function (err: any, req: Request, res: Response, next: NextFunction) {
   // set locals, only providing error in development

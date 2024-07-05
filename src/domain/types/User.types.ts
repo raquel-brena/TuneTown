@@ -42,13 +42,4 @@ export type UpdateUserDTO = {
   password?: string | null;
 };
 
-export type AuthUser = {
-  email: string;
-  password: string;
-};
-
-export type AuthUserResponse = {
-  token: string;
-  user: UserWithProfile;
-};
 

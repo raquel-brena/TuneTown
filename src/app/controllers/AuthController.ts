@@ -1,13 +1,12 @@
 import {
   CreateUserAndProfileDTO,
   CreateUserDTO,
-  UserResponseDTO,
-  AuthUser,
-  AuthUserResponse,
+  UserResponseDTO
 } from "../../domain/types/User.types";
 import { SignUp } from "../services/auth/SignUp";
 import { SignIn } from "../services/auth/SignIn";
 import { Request, Response } from "express";
+import { AuthUser, AuthUserResponse, UserSpotifyToken } from "../../domain/types/Auth.types";
 
 export class AuthController {
 
@@ -22,11 +21,10 @@ export class AuthController {
         password,
       });
 
-      
+      console.log(response);
       if (response === null) {
         return res.status(400).json({ message: "Usuário não encontrado" });
       }
-
       return res
         .status(200)
         .json({ token: response.token, user: response.user });
@@ -48,6 +46,25 @@ export class AuthController {
         username,
         password,
         avatarUrl,
+        refreshToken, 
+        accessToken
+      });
+
+      if (newUser === null) {
+        return res.status(400).json({ message: "Usuário não criado" });
+      }
+      return res.status(201).json({ user: newUser.username });
+    } catch (error: any) {
+      return res.status(400).json({ message: error.message });
+    }
+  }
+
+  async spotifyTokens(req: Request, res: Response) {
+    const { refreshToken, accessToken }:  =
+      req.body as UserSpotifyToken;
+
+    try {
+      const storedTokens = await storeSpotifyTokens({
         refreshToken, 
         accessToken
       });
