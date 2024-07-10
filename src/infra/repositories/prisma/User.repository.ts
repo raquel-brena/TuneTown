@@ -92,6 +92,12 @@ export class UserRepository implements IUsersRepository {
               following: true,
             },
           },
+          userToken: {
+            select: {
+              refreshToken: true,
+              accessToken: true,
+            },
+          }
         },
       });
 
@@ -100,6 +106,7 @@ export class UserRepository implements IUsersRepository {
       }
 
       const userWithProfile: UserWithProfile = {
+        id: user.id,
         email: user.email,
         name: user.name,
         username: user.username,
@@ -112,6 +119,10 @@ export class UserRepository implements IUsersRepository {
           posts: user.profile!.posts,
           followers: user.profile!.followers,
           following: user.profile!.following,
+        },
+        userToken: {
+          refreshToken: user.userToken?.refreshToken ?? "",
+          accessToken: user.userToken?.accessToken ?? "",
         },
       };
 

@@ -43,6 +43,16 @@ model Profile {
   createdAt DateTime @default(now())
 }
 
+model Track {
+  id        String   @id @default(uuid())
+  name     String
+  artist    String
+  album     String
+  duration  Int
+  urlImg       String
+  createdAt DateTime @default(now())
+}
+
 model Follow {
   id           String   @id @default(uuid())
   followerId   String

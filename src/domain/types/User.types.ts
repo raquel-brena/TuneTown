@@ -2,10 +2,15 @@ import { Profile } from "./Profile.types";
 
 
 export type User = {
+
   email: string;
   name: string;
   password: string;
   username: string;
+  userToken?: {
+    refreshToken: string;
+    accessToken: string;
+  } | null;
 };
 
 export type UserEntity = User & {
@@ -16,6 +21,7 @@ export type UserEntity = User & {
 
 
 export type UserWithProfile = User & {
+  id: string;
   profile: Profile;
 };
 
